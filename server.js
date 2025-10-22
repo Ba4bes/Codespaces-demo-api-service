@@ -7,12 +7,13 @@ const port = 4000;
 
 // connects to the "db" service provided by docker-compose in the codespace
 const pool = new Pool({
-  host: "db",
+  host: "localhost",
   port: 5432,
   user: "postgres",
   password: process.env.POSTGRES_PASSWORD || "postgres",
   database: "appdb"
 });
+
 
 app.get("/api/health", (_req, res) => {
   res.json({ ok: true, message: greet("API") });
